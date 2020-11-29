@@ -1,0 +1,31 @@
+server:
+  port: 8080
+    
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+app:
+  description: Meep Test Application by Juan Francisco Jara Bellido
+  version: 1.0
+  title: Resource reader from Lisboa
+
+spring:
+  profiles: default
+config:
+  url: https://apidev.meep.me/tripplan/api/v1/routers/lisboa/resources
+  lowerLeftLatLon: 38.711046,-9.160096
+  upperRightLatLon: 38.739429,-9.137115
+  companyZoneIds: 545,467,473
+  cron: 0/5 * * * * *
+---
+
+spring:
+  profiles: dev
+  
+config:
+  url: https://apidev.meep.me/tripplan/api/v1/routers/lisboa/resources
+  lowerLeftLatLon: 
+  upperRightLatLon: 
+  companyZoneIds: 
+  cron: 0 0/2 * * * *
+
