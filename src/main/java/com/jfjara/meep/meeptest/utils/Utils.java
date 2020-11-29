@@ -2,8 +2,10 @@ package com.jfjara.meep.meeptest.utils;
 
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.HashMap;
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
@@ -13,6 +15,22 @@ import com.jfjara.meep.meeptest.exceptions.MeepException;
 
 @Component
 public class Utils {
+	
+	@Value("${config.url}")
+	private String url;
+	
+	@Value("${config.lowerLeftLatLon}")
+	private String lowerLeftLatLon;
+	
+	@Value("${config.upperRightLatLon}")
+	private String upperRightLatLon;
+	
+	@Value("${config.companyZoneIds}")
+	private String companyZoneIds;
+	
+	public String getUrl() {
+		return url;
+	}
 	
 	public URI createURI(String url, Map<String, String> parameters) throws URISyntaxException, MeepException {
 		StringBuilder builder = new StringBuilder();
@@ -43,6 +61,14 @@ public class Utils {
 
 	public HttpEntity<HttpHeaders> createHttpEntity() { 
 		return new HttpEntity<HttpHeaders>(createJsonHeader());
+	}
+	
+	public Map<String, String> createUrlParameters() {
+		Map<String, String> result = new HashMap<String, String>();
+		result.put(Constants.LOWER_LEFT_LATLON, lowerLeftLatLon);
+		result.put(Constants.UPPER_RIGHT_LATLON, upperRightLatLon);
+		result.put(Constants.COMPANY_ZONE_IDS, companyZoneIds);
+		return result;
 	}
 	
 }

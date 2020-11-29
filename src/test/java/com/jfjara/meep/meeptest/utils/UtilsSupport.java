@@ -14,6 +14,7 @@ public class UtilsSupport {
 	public static final String MODIFIED_CONTROLLER = "/modified";
 	public static final String NOT_AVAIL_CONTROLLER = "/notavail";
 	public static final String AVAIL_CONTROLLER = "/avail";
+	public static final String GET_CONTROLLER = "/get";
 	
 	public static List<MeepResource> generateMockResources2() {
 		List<MeepResource> resources = new ArrayList<MeepResource>();

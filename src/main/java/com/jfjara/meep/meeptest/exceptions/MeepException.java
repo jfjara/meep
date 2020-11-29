@@ -8,11 +8,6 @@ public class MeepException extends Exception {
 	
 	public MeepException(String msg) {
 		this.customMessage = msg;
-	}
-	
-	public String getCustomMessage() {
-		return customMessage;
-	}
-	
+	}	
 
 }

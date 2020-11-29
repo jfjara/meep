@@ -23,18 +23,6 @@ import com.jfjara.meep.meeptest.utils.Utils;
 
 @Component
 public class QueryScheduler {
-
-	@Value("${config.url}")
-	private String url;
-	
-	@Value("${config.lowerLeftLatLon}")
-	private String lowerLeftLatLon;
-	
-	@Value("${config.upperRightLatLon}")
-	private String upperRightLatLon;
-	
-	@Value("${config.companyZoneIds}")
-	private String companyZoneIds;
 		
 	@Autowired
 	private IRestService restService;
@@ -48,19 +36,9 @@ public class QueryScheduler {
 	@Scheduled(cron = "${config.cron}")
 	public void scheduler() throws URISyntaxException, MeepException, InterruptedException, ExecutionException, TimeoutException {
 		Future<List<MeepResource>> futureResponse =  restService.getObjects(
-				utils.createURI(url, createUrlParameters()));
+				utils.createURI(utils.getUrl(), utils.createUrlParameters()));
 		List<MeepResource> resources = futureResponse.get(Constants.TIMEOUT, TimeUnit.MILLISECONDS);		
 		cache.processResources(resources);
 	}
-
-	private Map<String, String> createUrlParameters() {
-		Map<String, String> result = new HashMap<String, String>();
-		result.put(Constants.LOWER_LEFT_LATLON, lowerLeftLatLon);
-		result.put(Constants.UPPER_RIGHT_LATLON, upperRightLatLon);
-		result.put(Constants.COMPANY_ZONE_IDS, companyZoneIds);
-		return result;
-	}
-	
-	
 
 }
