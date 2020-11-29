@@ -7,6 +7,9 @@ Se ha realizado la funcionalidad solicitada añadiendo lo siguiente:
 - Se ha perfilado la aplicación para poder configurar según el perfil solicitado en el fichero de propiedades del proyecto.
 - Se añade librería OpenApi 3 para la documentación de los controllers.
 - Se incluye Java Actuators.
+- Incluye Dockerfile para desplegar la aplicación en un contenedor.
+     docker build -t meep:1.0
+     docker run -it --rm -p 8080:8080 meep:1.0
 
 
 # Funcionamiento de la aplicación:
