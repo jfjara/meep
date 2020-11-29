@@ -8,8 +8,8 @@ Se ha realizado la funcionalidad solicitada añadiendo lo siguiente:
 - Se añade librería OpenApi 3 para la documentación de los controllers.
 - Se incluye Java Actuators.
 - Incluye Dockerfile para desplegar la aplicación en un contenedor.
-     docker build -t meep:1.0
-     docker run -it --rm -p 8080:8080 meep:1.0
+     * docker build -t meep:1.0
+     * docker run -it --rm -p 8080:8080 meep:1.0
 
 
 # Funcionamiento de la aplicación:
